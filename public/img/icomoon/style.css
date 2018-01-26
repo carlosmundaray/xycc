@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?4ao3dt');
+  src:  url('fonts/icomoon.eot?4ao3dt#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?4ao3dt') format('truetype'),
+    url('fonts/icomoon.woff?4ao3dt') format('woff'),
+    url('fonts/icomoon.svg?4ao3dt#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-print:before {
+  content: "\e900";
+  color: #fff;
+}
+.icon-territory:before {
+  content: "\e901";
+  color: #fff;
+}
+.icon-newspaper:before {
+  content: "\e902";
+  color: #fff;
+}
+.icon-tools:before {
+  content: "\e903";
+  color: #fff;
+}
+.icon-search:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-contacts:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-home:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-files:before {
+  content: "\e907";
+  color: #fff;
+}
+.icon-book:before {
+  content: "\e908";
+  color: #fff;
+}
+.icon-unlock:before {
+  content: "\e909";
+  color: #fff;
+}
+.icon-business:before {
+  content: "\e90a";
+  color: #fff;
+}
+.icon-edit:before {
+  content: "\e90b";
+  color: #fff;
+}
+.icon-browsers:before {
+  content: "\e90c";
+  color: #fff;
+}
+.icon-checked:before {
+  content: "\e90d";
+  color: #fff;
+}
+.icon-signs:before {
+  content: "\e90e";
+  color: #fff;
+}
+.icon-error:before {
+  content: "\e90f";
+  color: #fff;
+}
+.icon-stop:before {
+  content: "\e910";
+  color: #fff;
+}
+.icon-gear:before {
+  content: "\e911";
+  color: #fff;
+}
+.icon-trash:before {
+  content: "\e912";
+  color: #fff;
+}
+.icon-logo:before {
+  content: "\e913";
+  color: #fff;
+}
+.icon-analytics:before {
+  content: "\e914";
+  color: #fff;
+}
+.icon-lock:before {
+  content: "\e915";
+  color: #fff;
+}
