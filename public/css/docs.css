@@ -6,38 +6,38 @@
 /*Reset*/
 
 *, *:before, *:after {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-user-select: none;*/
-	-moz-user-select: none;
-	-ms-user-select: none;
-	*user-select: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  */ -moz-user-select: none;
+  -ms-user-select: none;
+  *user-select: none;
 }
 
-/* Reset */
-
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-	font: inherit;
-	font-size: 100%;
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-	border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 0;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
-li { list-style: none; }
+li {
+  list-style: none;
+}
 
 /* Lets Rock */
 
 html, body {
   width: 100%;
   height: 100%;
-  font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -60,24 +60,24 @@ body {
 }
 
 .logo {
-  background-image: url('../images/logo-docs.png');
+  background-image: url('../img/logo-docs.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   height: 80px;
   width: 100%;
-  border: 23px solid rgba(255,255,255,0);
+  border: 23px solid rgba(255, 255, 255, 0);
 }
 
 .active {
-  color: #e43f48!important;
+  color: #e43f48 !important;
 }
 
 #mainNav ul {
   width: 100%;
 }
 
-#mainNav ul li a{
+#mainNav ul li a {
   padding: 2px 20px;
   line-height: 36px;
   width: 100%;
@@ -86,15 +86,15 @@ body {
   transition: .3s ease;
 }
 
-#mainNav ul li a:hover{
+#mainNav ul li a:hover {
   background-color: #eee;
   color: #e43f48;
 }
 
 .copyright {
-    color: #777;
-    font-size: 0.7em;
-    font-weight: 200;
+  color: #777;
+  font-size: 0.7em;
+  font-weight: 200;
 }
 
 main {
@@ -136,13 +136,13 @@ main {
 }
 
 .tableContent a {
-    color: #888;
-    transition: .3s ease;
-    counter-reset: tableContent1;
+  color: #888;
+  transition: .3s ease;
+  counter-reset: tableContent1;
 }
 
 .tableContent a:hover {
-    color: #e43f48;
+  color: #e43f48;
 }
 
 ol {
@@ -163,7 +163,7 @@ ol li {
 }
 
 h1 {
-  font-family: Raleway,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3em;
   font-weight: 200;
   line-height: 52px;
@@ -171,7 +171,7 @@ h1 {
 }
 
 h2 {
-  font-family: Raleway,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.7em;
   font-weight: 200;
   line-height: 52px;
@@ -180,7 +180,7 @@ h2 {
 }
 
 h4 {
-  font-family: Raleway,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8em;
   font-weight: 600;
   letter-spacing: 1px;

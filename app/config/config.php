@@ -2,9 +2,9 @@
   // App Root
   define('APP', dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
   // URL Root
-  define('ROOT', 'http://localhost:8888/territory/');
+  define('ROOT', 'http://localhost:8888/xycc/');
   // Site Name
-  define('SITENAME', 'Territory');
+  define('SITENAME', 'XYCC');
   // Define DB Credentials
   define("DB_HOST", "localhost");
   define("DB_USER", "root");
