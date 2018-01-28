@@ -6,8 +6,7 @@
 
     public function index(){
       $data = [
-        'title' => 'Welcome',
-        'description' => 'This is a simple social network that allows you to share posts to the rest of the world.'
+        'title' => 'Home'
       ];
 
       $this->view('pages/index', $data);
@@ -15,8 +14,7 @@
 
     public function about(){
       $data = [
-        'title' => 'About Us',
-        'description' => 'App to share posts with other users.'
+        'title' => 'About'
       ];
 
       $this->view('pages/about', $data);

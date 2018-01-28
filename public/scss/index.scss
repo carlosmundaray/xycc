@@ -1,0 +1,229 @@
+/**
+ * Index Page CSS
+ * @copyright Jordan Davila 2018
+ */
+
+// Variable Colors
+$primaryRed: #e43f48;
+$primaryBlack: #010101;
+$white: #ffffff;
+$grey1: #171715;
+$grey2: #525252;
+$grey3: #b7b7b7;
+
+// Variable Fonts
+$lato: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$roboto: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$raleway: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Logos & Icons
+.black_full_logo { background-image: url('../img/logos/logo1.png'); }
+.white_full_logo { background-image: url('../img/logos/logo4.png'); }
+.grey_full_logo { background-image: url('../img/logos/logo3.png'); }
+.red_full_logo { background-image: url('../img/logos/logo2.png'); }
+.black_icon_logo { background-image: url('../img/logos/logo1.png'); }
+.white_icon_logo { background-image: url('../img/logos/logo4.png'); }
+.grey_icon_logo { background-image: url('../img/logos/logo3.png'); }
+.red_icon_logo { background-image: url('../img/logos/logo2.png'); }
+
+  //Mixins
+  @mixin logo_standard {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+/**
+ * Main Html Body Wrappers
+ * @updated 01/25/18
+ */
+
+html, body {
+  width: 100%;
+  font-family: $lato;
+  background-color: $white;
+  color: $grey2;
+  letter-spacing: 1px;
+}
+
+/**
+ * Main Navigation Menu
+ * @updated 01/25/18
+ */
+
+.main_nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo_container {
+  flex: 230px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primaryRed;
+  a {
+    @include logo_standard;
+    width: 80%;
+    height: 20px;
+    display: block;
+  }
+}
+
+.links_nav_container {
+  flex: 1 0;
+  .top_nav_links {
+    height: 30px;
+    background-color: $grey1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    ul {
+      padding: 0px 40px;
+      li {
+        display: inline-block;
+        margin-left: 20px;
+        a {
+          font-size: 0.5em;
+          font-weight: 900;
+          color: $white;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .top_nav_login {
+      flex: 80px 0;
+      background-color: $primaryBlack;
+      text-align: center;
+      color: $white;
+      font-size: 0.6em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  }
+  .main_links_container {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    background-color: $white;
+    .main_links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 40px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      flex: 1 0;
+
+      ul {
+        li {
+          display: inline-block;
+          margin-right: 35px;
+          a {
+            font-size: 0.6em;
+            font-weight: 900;
+            color: $primaryBlack;
+            text-transform: uppercase;
+          }
+          span {
+            font-size: 0.9em;
+            color: $primaryRed;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .info_box_container {
+        padding: 7px 20px;
+        border: 1px solid $primaryRed;
+        border-radius: 3px;
+        .info_box{
+          display: inline-block;
+          span {
+            font-weight: 900;
+            font-size: 0.6em;
+            text-transform: uppercase;
+            color: $primaryRed;
+            line-height: 20px;
+          }
+        }
+        span {
+          font-size: 0.9em;
+          color: $primaryRed;
+          margin-left: 5px;
+        }
+        .more_info_box {
+          display: none;
+        }
+      }
+    }
+
+    .search_container {
+      flex: 80px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .fa-search {
+        color: $primaryRed;
+        font-size: 1.2em;
+        font-weight: 200;
+      }
+    }
+
+  }
+}
+
+/**
+ * Main Content Begins
+ * @updated 01/25/18
+ */
+
+main {
+  width: 100%;
+  height: 3000px;
+  overflow: hidden;
+  background-color: $primaryBlack;
+  position: relative;
+  background-image: url('../img/bg/big-city.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: auto 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.front_text_container {
+  flex: 70vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  .badge_icon {
+    background-image: url('../img/icons/badge.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+  }
+  h1 {
+    color: $white;
+    font-size: 3.3em;
+    font-family: Raleway;
+    font-weight: 200;
+    text-align: center;
+    line-height: 70px;
+    i {
+      color: $primaryRed;
+      cursor: pointer;
+      span {
+        margin-left: 10px;
+      }
+    }
+  }
+}

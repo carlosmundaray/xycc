@@ -1,38 +1,7 @@
-/* Icons */
-
-@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,800');
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
-
-/*Reset*/
-
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  */ -moz-user-select: none;
-  -ms-user-select: none;
-  *user-select: none;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
-/* Lets Rock */
+/**
+ * Documentation CSS
+ * @copyright Jordan Davila 2018
+ */
 
 html, body {
   width: 100%;
@@ -60,7 +29,7 @@ body {
 }
 
 .logo {
-  background-image: url('../img/logo-docs.png');
+  background-image: url('../img/logos/logo-docs.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -179,6 +148,15 @@ h2 {
   margin-top: 45px;
 }
 
+h3 {
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
 h4 {
   font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8em;
@@ -194,4 +172,55 @@ p {
   font-size: 0.9em;
   line-height: 27px;
   margin-bottom: 10px;
+}
+
+.docTableContainer {
+  background-color: #fff;
+  padding: 17px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 20px 0px;
+}
+
+.docTable {
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.docTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.docTable tr {
+  border-top: 1px solid #ddd;
+}
+
+.docTable tr:first-child {
+  border-top: 0px ;
+}
+
+.docTable td, .docTable th {
+  padding: 8px;
+  border-right: 1px solid #ddd;
+  line-height: 1.42857143;
+  vertical-align: top;
+  text-align: left;
+}
+
+.docTable td:first-child {
+    font-weight: 400;
+    padding-right: 40px;
+}
+
+.importantStar {
+  font-family: Roboto;
+  font-size: 1em;
+  height: 10px;
+  color: #e43f48;
+  font-weight: 900;
+  margin-right: 3px;
 }

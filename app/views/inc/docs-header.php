@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo ROOT; ?>/public/favicon.png">
+  <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/fonts.css">
+  <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/reset.css">
   <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/docs.css">
-  <title><?php echo SITENAME . ": Documentation"; ?></title>
+  <title>
+    <?php echo SITENAME . ' | ' . $data['title']; ?>
+  </title>
 </head>
-  <body>
+
+<body>
 
   <nav id="mainNav">
     <section class="logo"></section>

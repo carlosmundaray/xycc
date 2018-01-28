@@ -5,11 +5,17 @@
     }
 
     public function index(){
-      $this->view('docs/index');
+      $data = [
+        'title' => 'Docs'
+      ];
+      $this->view('docs/index', $data);
     }
 
     public function database(){
-      $this->view('docs/database');
+      $data = [
+        'title' => 'Docs: Database'
+      ];
+      $this->view('docs/database', $data);
     }
 
   }
