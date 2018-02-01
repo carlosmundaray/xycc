@@ -1,8 +1,7 @@
 <?php require APP . 'views/inc/docs-header.php'; ?>
 
 <h1>Project Proposal</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>XYCC Project proposal document. Please use the table of content to navigate through this document. For help or support please visit this <a href="#">site</a></p>
 <section class="tableContent">
   <h4>Table of Content</h4>
   <ol>
@@ -154,10 +153,10 @@
 <p>XYCC’s LMS is an online system that requires a server. The LMS could be integrated with the school’s server or a web hosting service. PHP 5.6+ is required with MySQL for the database connection. XYCC’s LMS is built using HTML5 & CSS3, which means that an up to date web browser is required to use.</p>
 
 <h2 id="web-hosting">Web Hosting</h2>
-<p>Due to the size of the school, we recommend using a self-hosting solution. This provides the ultimate flexibility and customization as well as an unrestricted amount of bandwidth, CPU and RAM. You’ll be able to host your LMS portal, store an unlimited amount of data.</p>
+<p>Due to the size of the school, we recommend using a self-hosting solution. This provides the ultimate flexibility and customization as well as an unrestricted amount of bandwidth, CPU and RAM. </p>
 
 <h2 id="budget">Budget</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+<p>To do: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
