@@ -9,6 +9,6 @@
   define("DB_HOST", "localhost");
   define("DB_USER", "root");
   define("DB_PASS", "root");
-  define("DB_NAME", "territory");
+  define("DB_NAME", "xycc");
   // Define App Version
   define("VERSION", "1.0.0");

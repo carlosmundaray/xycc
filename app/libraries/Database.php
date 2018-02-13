@@ -74,6 +74,12 @@ class Database {
       return $this->stmt->rowCount();
     }
 
+    public function rowCountExecute($query){
+      $this->query($query);
+      $this->execute();
+      return $this->stmt->rowCount();
+    }
+
     public function lastInsertId(){
       return $this->db->lastInsertId();
     }

@@ -4,7 +4,7 @@
 <section id="website" class="no_site">
   <!-- Logo -->
   <div class="logo_full_wrap no_opacity">
-    <a href="#" class="logo_wrap">
+    <a href="<?php echo ROOT; ?>" class="logo_wrap home_page">
       <div class="logo white_icon_logo"></div>
     </a>
     <div class="logo_text"></div>
@@ -15,7 +15,7 @@
 
   <!-- Login Button -->
   <div class="login_wrap no_opacity">
-    <a href="#">Login to Portal</a>
+    <a href="<?php echo ROOT; ?>portal/login">Login to Portal</a>
     <div class="login_line"></div>
   </div>
 
@@ -23,8 +23,8 @@
   <section id="main_content" class="no_opacity">
       <h1><span>01</span>Admissions</h1>
       <ul>
-        <li><a href="#">Admissions</a></li>
-        <li><a href="pages/about/">About</a></li>
+        <li><a href="<?php echo ROOT; ?>pages/admissions/" class="content_page">Admissions</a></li>
+        <li><a href="<?php echo ROOT; ?>pages/about/" class="content_page">About</a></li>
         <li><a href="#">Academics</a></li>
         <li><a href="#">Campus Life</a></li>
         <li><a href="#">Store</a></li>

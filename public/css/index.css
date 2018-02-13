@@ -125,7 +125,10 @@ main {
   -ms-flex-align: center;
   align-items: center;
   width: calc(100vw - 40px);
-  height: calc(100vh - 40px); }
+  height: calc(100vh - 40px);
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.3); }
 
 .logo_full_wrap {
   position: absolute;
@@ -177,7 +180,10 @@ main {
   z-index: 9999;
   -webkit-transition: 1s ease all;
   -o-transition: 1s ease all;
-  transition: 1s ease all; }
+  transition: 1s ease all;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
   .login_wrap a {
     color: #ffffff;
     font-size: 1em;
@@ -248,6 +254,18 @@ main {
       color: #ffffff;
       font-size: 1em;
       font-weight: 400; }
+  #main_content p {
+    color: #ffffff;
+    margin-top: 20px;
+    line-height: 30px;
+    width: 50%; }
+
+.left_content {
+  position: absolute !important;
+  left: 8vw;
+  -webkit-box-align: start !important;
+  -ms-flex-align: start !important;
+  align-items: flex-start !important; }
 
 .gallery_circles {
   position: absolute;
@@ -314,7 +332,9 @@ main {
     animation: unset;
     width: 100%;
     height: 100%;
-    background-position: right; }
+    background-position: right;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; }
 
 .full_gallery {
   left: 50%;
