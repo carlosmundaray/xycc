@@ -165,12 +165,13 @@
 
         // Make sure error are empty to process form
         if ($error_checker) {
-          if(!$this->userModel->login($data['email'], $data['password'])){
-            $data['errors']['match'] = 'Email and Password do not match';
-            $this->view('portal/login', $data);
+          $user = $this->userModel->login($data['email'], $data['password']);
+          if($user){
+            $this->createUserSession($user['id']);
           }
         } else {
-          $this->view('portal/login', $data);
+          $data['errors']['match'] = 'Email and Password do not match';
+          $this->view('users/login', $data);
         }
 
       } else {
@@ -187,6 +188,29 @@
         ];
 
         $this->view('users/login', $data);
+      }
+    }
+
+    public function logout(){
+      $this->logUserOut();
+    }
+
+    private function logUserOut(){
+      unset($_SESSION['user_id']);
+      session_destroy();
+      redirect('users/login');
+    }
+
+    private function createUserSession($id){
+      $_SESSION['user_id'] = $id;
+      redirect('portal/dash');
+    }
+  
+    private function isLoggedIn(){
+      if(isset($_SESSION['user_id'])){
+        return true;
+      } else {
+        return false;
       }
     }
   }

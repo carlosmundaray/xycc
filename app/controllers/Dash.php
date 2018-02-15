@@ -1,9 +1,7 @@
 <?php
-  class Portal extends Controller {
+  class Dash extends Controller {
 
     public function __construct(){
-      //Check Model
-      $this->userModel = $this->model('User');
     }
 
     public function index(){
@@ -11,6 +9,6 @@
         'title' => 'Dashboard'
       ];
 
-      $this->view('portal/dash', $data);
+      $this->view('dash/index', $data);
     }
   }

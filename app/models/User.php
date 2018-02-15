@@ -195,7 +195,7 @@ class User
     $hashed_password = $row['password'];
 
     if(Bcrypt::checkPassword($password, $hashed_password)){
-      $this->createUserSession($row['id']);
+      return $row;
     } else {
       return false;
     }
@@ -211,27 +211,6 @@ class User
 
     // Check row
     if($this->db->rowCount() > 0){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public function createUserSession($id){
-    $_SESSION['user_id'] = $id;
-    redirect('portal/dash');
-  }
-
-  public function logout(){
-    unset($_SESSION['user_id']);
-    unset($_SESSION['user_email']);
-    unset($_SESSION['user_name']);
-    session_destroy();
-    redirect('portal/login');
-  }
-
-  public function isLoggedIn(){
-    if(isset($_SESSION['user_id'])){
       return true;
     } else {
       return false;
