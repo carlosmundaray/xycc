@@ -121,6 +121,65 @@ html {
   flex-direction: row!important;
 }
 
+// Floating Elements
+.logo_full_wrap {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  transition: 1s ease all;
+  display: flex;
+  .logo_wrap {
+    width: 80px;
+    height: 80px;
+    background-color: $red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      @include logo_standard;
+      width: 40%;
+      height: 40%;
+    }
+  }
+  .logo_text {
+    @include logo_standard;
+    background-position: top;
+    background-image: url(../img/logos/logo-text.png);
+    width: 120px;
+    height: 80px;
+    margin-left: 15px;
+  }
+}
+
+.login_wrap {
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  align-items: center;
+  z-index: 9999;
+  transition: 1s ease all;
+  display: flex;
+  a {
+    color: $white;
+    font-size: 1em;
+    font-weight: 200;
+    display: inline-block;
+  }
+  .login_line {
+    height: 1px;
+    background-color: $white;
+    width: 50px;
+    display: inline-block;
+    margin-left: 10px;
+    transition: 0.5s ease all;
+  }
+}
+
+.login_wrap:hover > .login_line {
+  width: 60px;
+}
+
 /**
  * Main
  */
@@ -692,19 +751,36 @@ main {
     margin-bottom: 0;
     width: 30%;
   }
-
   .half_field {
     flex: 50% 0;
   }
-
+  
   .full_field {
     flex: 100% 0;
   }
-
+  
   .third_field {
     flex: 33.333% 0;
   }
 }
+
+.user_stats_container {
+  flex: 1 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 20px 20px 20px;
+  .half_field {
+    flex: 50% 0;
+    color: $links_colors;
+    font-size: 0.9em;
+    text-align: left;
+    i {
+      color: $module_heading;
+    }
+  }  
+}
+
+
 
 // Tables
 .user_table {
@@ -724,6 +800,7 @@ table {
     font-size: 0.8em;
     vertical-align: middle;
     padding: 10px;
+    color: $links_colors;
     a {
       background: $btn_pink_color;
       padding: 5px 20px;
@@ -766,7 +843,7 @@ table {
     border: 1px solid #eee;
     font-size: 0.7em;
     line-height: 20px;
-    color: #ddd;
+    color: $links_colors;
     background-color: #fbfbfb;
     border-radius: 3px;
     margin-left: 5px;
@@ -774,4 +851,21 @@ table {
   .active {
     color: #333;
   }
+}
+
+#flash_msg {
+  flex: 1 0;
+  padding: 20px;
+  margin-bottom: 15px;
+  font-size: 0.8em;
+}
+
+.alert_success {
+  color: #fff;
+  background: linear-gradient(45deg, #00ffb8, #0072ff);
+}
+
+.alert_error {
+  color: #fff;
+  background: linear-gradient(45deg, #ff0037, #ff6f00);
 }

@@ -4,6 +4,7 @@
     public function __construct(){
       //Check Model
       $this->userModel = $this->model('User');
+      
     }
 
     public function index(){
@@ -56,7 +57,7 @@
           $data['last_name_err'] == 'Please enter Last Name';
         }
 
-        // Make sure error are empty to process form
+        // Make sure errors are empty to process form
         if (empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err'])) {
           $this->userModel->first_name = trim($_POST['first_name']);
           $this->userModel->last_name = trim($_POST['last_name']);
@@ -69,8 +70,15 @@
           $this->userModel->city = trim($_POST['city']);
           $this->userModel->state = trim($_POST['state']);
           $this->userModel->zip = trim($_POST['zip']);
-          $this->userModel->registerUser();
-          $this->view('users/index', $data);
+          
+          if($this->userModel->registerUser()){
+            flash('register_success', 'User has been Register. Please Visit Email to Activate Account');
+            redirect('users/');
+          } else {
+            flash('register_error', 'Sorry Something went wrong.', 'alert_error');
+            redirect('users/');
+          }
+
         } else {
           $this->view('users/index', $data);
         }
@@ -101,6 +109,84 @@
         ];
 
         $this->view('users/index', $data);
+      }
+    }
+
+    public function edit($id){
+      $data = [
+        'title' => 'Edit User: ' . $id,
+        'userInfo' => $this->userModel->findById($id)
+      ];
+      $this->view('users/edit', $data);
+    }
+
+    public function login(){
+      //Check for Post
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $data = [
+          'title' => 'Login',
+          'email' => trim($_POST['email']),
+          'password' => trim($_POST['password']),
+          'errors' => [
+            'email' => '',
+            'password' => '',
+            'match' => ''
+          ]
+        ];
+
+        // Validate Email
+        if (empty($data['email'])) {
+          $data['errors']['email'] = 'Please enter Email';
+        } else {
+          // Check if User Exist
+          if(!$this->userModel->findUserByEmail($data['email'])){
+            $data['errors']['email'] = "Email isn't registered into our system";
+          }
+        }
+
+        // Validate Password
+        if (empty($data['password'])) {
+          $data['errors']['password'] = 'Please enter password';
+        }
+
+        // Make sure all errors are empty before processing
+        foreach ($data['errors'] as $key => $value) {
+          if(!empty($value)){
+            $error_checker = false;
+            break;
+          } else {
+            $error_checker = true;
+          }
+        }
+
+        // Make sure error are empty to process form
+        if ($error_checker) {
+          if(!$this->userModel->login($data['email'], $data['password'])){
+            $data['errors']['match'] = 'Email and Password do not match';
+            $this->view('portal/login', $data);
+          }
+        } else {
+          $this->view('portal/login', $data);
+        }
+
+      } else {
+        
+        $data = [
+          'title' => 'Users',
+          'email' => '',
+          'password' => '',
+          'errors' => [
+            'email' => '',
+            'password' => '',
+            'match' => ''
+          ]
+        ];
+
+        $this->view('users/login', $data);
       }
     }
   }

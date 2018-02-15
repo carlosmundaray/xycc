@@ -19,7 +19,13 @@
     </nav>
     <section id="portal_content">
       <nav id="top_nav">
-
+        <?php 
+        
+        if(isset($_SESSION['user_id'])){
+          echo $_SESSION['user_id'];
+        }
+        
+        ?>
       </nav>
       <section id="content">
         <section class="top_section_module">

@@ -19,49 +19,49 @@
         </nav>
         <section id="portal_content">
             <nav id="top_nav">
-
+                
             </nav>
             <section id="content" class="flex_row">
                 <section class="left_section_module">
                     <section class="modules">
                         <h1 class="module_heading">List of Users</h1>
+                        <?php flash('register_success'); ?>
+                        <?php flash('register_error'); ?>
                         <div class="user_table" data-simplebar>
+                            <table>
+                                <tr>
+                                    <th width="50">ID</th>
+                                    <th>Name</th>
+                                    <th width="80">Gender</th>
+                                    <th width="130">Role</th>
+                                    <th width="80">Action</th>
+                                </tr>
 
-                          <table>
-                              <tr>
-                                  <th width="50">ID</th>
-                                  <th>Name</th>
-                                  <th width="80">Gender</th>
-                                  <th width="130">Role</th>
-                                  <th width="80">Action</th>
-                              </tr>
+                                <?php foreach ($data['userList'] as $user) { ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $user[ 'id']; ?>
+                                    </td>
+                                    <td>
+                                        <div class="avatar_name_container">
+                                            <div class="avatar" style="background-image: url('<?php echo $user['avatar']; ?>'); "></div>
+                                            <div class="full_name">
+                                                <?php echo $user[ 'first_name'] . " " . $user[ 'last_name']; ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <?php echo $user[ 'gender']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $user[ 'role']; ?>
+                                    </td>
+                                    <td><a href="<?php echo ROOT . 'users/edit/' . $user['id']; ?>">Edit</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
 
-                              <?php foreach ($data['userList'] as $user) { ?>
-                              <tr>
-                                  <td>
-                                      <?php echo $user[ 'id']; ?>
-                                  </td>
-                                  <td>
-                                      <div class="avatar_name_container">
-                                          <div class="avatar" style="background-image: url('<?php echo $user['avatar']; ?>'); "></div>
-                                          <div class="full_name">
-                                              <?php echo $user[ 'first_name'] . " " . $user[ 'last_name']; ?>
-                                          </div>
-                                      </div>
-                                  </td>
-                                  <td>
-                                      <?php echo $user[ 'gender']; ?>
-                                  </td>
-                                  <td>
-                                      <?php echo $user[ 'role']; ?>
-                                  </td>
-                                  <td><a href="">Edit</a>
-                                  </td>
-                              </tr>
-
-                              <?php } ?>
-
-                          </table>
+                            </table>
 
                         </div>
                         <div class="pagination_container">
@@ -72,17 +72,19 @@
                 <section class="right_section_module">
                     <section class="modules user_stats_module">
                         <h1 class="module_heading">User Stats</h1>
-                        <div class="half_field">
-                          Total: <i><?php echo $data['totalUsers']; ?></i>
-                        </div>
-                        <div class="half_field">
-                          Admins: <i><?php echo $data['userAdminCount']; ?></i>
-                        </div>
-                        <div class="half_field">
-                          Teachers: <i><?php echo $data['userTeacherCount']; ?></i>
-                        </div>
-                        <div class="half_field">
-                          Students: <i><?php echo $data['userStudentCount']; ?></i>
+                        <div class="user_stats_container">
+                            <div class="half_field">
+                            Total: <i><?php echo $data['totalUsers']; ?></i>
+                            </div>
+                            <div class="half_field">
+                            Admins: <i><?php echo $data['userAdminCount']; ?></i>
+                            </div>
+                            <div class="half_field">
+                            Teachers: <i><?php echo $data['userTeacherCount']; ?></i>
+                            </div>
+                            <div class="half_field">
+                            Students: <i><?php echo $data['userStudentCount']; ?></i>
+                            </div>
                         </div>
                     </section>
                     <section class="modules new_user_module">
