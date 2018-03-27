@@ -4,10 +4,17 @@
     public function __construct(){
       //Check Model
       $this->userModel = $this->model('User');
-      
     }
 
+    // View and Register [GET/POST]
     public function index(){
+
+      if(isLoggedIn()){
+        block('student','dash');
+        block('teacher','dash');
+      } else {
+        redirect('users/login');
+      }
 
       // Results & Data
       $userResult = $this->userModel->findAllUsersPag();
@@ -18,63 +25,96 @@
 
       //Check for Post
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Process Form
+
+        // Register User
+        // Prepare a random password
+        // Hash Password
+        // Send user data to model
+        // Vaidate & Error Check
 
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data = [
           'title' => 'Users',
-          'first_name' => trim($_POST['first_name']),
-          'last_name' => trim($_POST['last_name']),
-          'email' => trim($_POST['email']),
-          'phone' => trim($_POST['phone']),
-          'role' => trim($_POST['role']),
-          'gender' => trim($_POST['gender']),
-          'major' => trim($_POST['major']),
-          'address' => trim($_POST['address']),
-          'city' => trim($_POST['city']),
-          'state' => trim($_POST['state']),
-          'zip' => trim($_POST['zip']),
-          'first_name_err' => '',
-          'last_name_err' => '',
-          'email_err' => '',
-          'userList' => $userResult['userList'],
-          'paginationLinks' => $userResult['paginationLinks']
+          'user_list' => $userResult['userList'], // List of all Users
+          'pagination_links' => $userResult['paginationLinks'], // Pagination links for the list of users
+          'user' => [
+            'first_name' => trim($_POST['first_name']),
+            'last_name' => trim($_POST['last_name']),
+            'email' => trim($_POST['email']),
+            'password' => '', // Generate a random password after form validation
+            'phone' => trim($_POST['phone']),
+            'role' => trim($_POST['role']),
+            'gender' => trim($_POST['gender']),
+            'avatar' => '', // Generate an avatar after form validation
+            'major' => trim($_POST['major']),
+            'address' => trim($_POST['address']),
+            'city' => trim($_POST['city']),
+            'state' => trim($_POST['state']),
+            'zip' => trim($_POST['zip']),
+            'activation_code' =>   md5(uniqid("abcdefghijklmnopqrstuvwxyz", true))
+          ],
+          'errors' => [
+            'first_name' => '',
+            'last_name' => '',
+            'email' => '',
+            'phone' => '',
+            'role' => '',
+            'gender' => '',
+            'major' => '',
+            'address' => '',
+            'city' => '',
+            'state' => '',
+            'zip' => ''
+          ]
         ];
 
         // Validate Email
-        if (empty($data['email'])) {
-          $data['email_err'] == 'Please enter Email';
+        if (empty($data['user']['email'])) {
+          $data['errors']['email'] == 'Please enter Email';
         }
 
         // Validate First & Last Name
-        if (empty($data['first_name'])) {
-          $data['first_name_err'] == 'Please enter First Name';
+        if (empty($data['user']['first_name'])) {
+          $data['errors']['first_name'] == 'Please enter First Name';
         }
 
-        if (empty($data['last_name'])) {
-          $data['last_name_err'] == 'Please enter Last Name';
+        if (empty($data['user']['last_name'])) {
+          $data['errors']['last_name'] == 'Please enter Last Name';
         }
 
-        // Make sure errors are empty to process form
-        if (empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err'])) {
-          $this->userModel->first_name = trim($_POST['first_name']);
-          $this->userModel->last_name = trim($_POST['last_name']);
-          $this->userModel->email = trim($_POST['email']);
-          $this->userModel->phone = trim($_POST['phone']);
-          $this->userModel->role = trim($_POST['role']);
-          $this->userModel->gender = trim($_POST['gender']);
-          $this->userModel->major = trim($_POST['major']);
-          $this->userModel->address = trim($_POST['address']);
-          $this->userModel->city = trim($_POST['city']);
-          $this->userModel->state = trim($_POST['state']);
-          $this->userModel->zip = trim($_POST['zip']);
-          
-          if($this->userModel->registerUser()){
-            flash('register_success', 'User has been Register. Please Visit Email to Activate Account');
+        // Make sure all errors are empty before processing
+        if (!$this->isErrors($data['errors'])) {
+
+          // Generate Random Password
+          $random_password = $this->randomPassword();
+          $data['user']['password'] = Bcrypt::hashPassword($random_password);
+
+          // Add an Avatar: Credits: ROBOHASH.ORG
+          $data['user']['avatar'] = "https://robohash.org/" . $data['user']['email'];
+
+
+          // Register User
+          if($this->userModel->registerUser($data['user'])){
+
+            // Start Flash message
+            $flash_message = 'Pass: '. $random_password .' - User has been Register. ';
+
+            // Try to send email
+            if($this->mailCredentials($random_password, $data['user']['email'])){
+              $flash_message .= 'Please Visit Email to Activate Account.';
+            } else {
+              $flash_message .= 'Unfortunetly, there was an error sending the email.';
+            }
+
+            //Display a flash message. Flash message is stored in a session.
+            flash('register_success', $flash_message);
             redirect('users/');
-          } else {
+          }
+
+          // User has not been registered.
+          else {
             flash('register_error', 'Sorry Something went wrong.', 'alert_error');
             redirect('users/');
           }
@@ -85,21 +125,10 @@
 
       } else {
 
+        // Get: Show all Users with Pagination
+
         $data = [
           'title' => 'Users',
-          'first_name' => '',
-          'last_name' => '',
-          'email' => '',
-          'phone' => '',
-          'role' => '',
-          'gender' => '',
-          'address' => '',
-          'city' => '',
-          'state' => '',
-          'zip' => '',
-          'first_name_err' => '',
-          'last_name_err' => '',
-          'email_err' => '',
           'userList' => $userResult['userList'],
           'paginationLinks' => $userResult['paginationLinks'],
           'userAdminCount' => $userAdminCount,
@@ -113,15 +142,120 @@
     }
 
     public function edit($id){
-      $data = [
-        'title' => 'Edit User: ' . $id,
-        'userInfo' => $this->userModel->findById($id)
-      ];
-      $this->view('users/edit', $data);
+      if(isLoggedIn()){
+        block('student','dash');
+        block('teacher','dash');
+      } else {
+        redirect('users/login');
+      }
+
+      //Check for Post
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $data = [
+          'title' => 'Edit User: ' . $id,
+          'user' => [
+            'id' => $id,
+            'first_name' => trim($_POST['first_name']),
+            'last_name' => trim($_POST['last_name']),
+            'email' => trim($_POST['email']),
+            'phone' => trim($_POST['phone']),
+            'role' => trim($_POST['role']),
+            'gender' => trim($_POST['gender']),
+            'major' => trim($_POST['major']),
+            'address' => trim($_POST['address']),
+            'city' => trim($_POST['city']),
+            'state' => trim($_POST['state']),
+            'zip' => trim($_POST['zip']),
+          ],
+          'errors' => [
+            'first_name' => '',
+            'last_name' => '',
+            'email' => '',
+            'phone' => '',
+            'role' => '',
+            'gender' => '',
+            'major' => '',
+            'address' => '',
+            'city' => '',
+            'state' => '',
+            'zip' => ''
+          ]
+        ];
+
+        // Validate Email
+        if (empty($data['user']['email'])) {
+          $data['errors']['email'] == 'Please enter Email';
+        }
+
+        // Validate First & Last Name
+        if (empty($data['user']['first_name'])) {
+          $data['errors']['first_name'] == 'Please enter First Name';
+        }
+
+        if (empty($data['user']['last_name'])) {
+          $data['errors']['last_name'] == 'Please enter Last Name';
+        }
+
+        // Make sure all errors are empty before processing
+        if (!$this->isErrors($data['errors'])) {
+
+          // Edit User
+          if($this->userModel->editUser($data['user'])){
+
+            // Start Flash message
+            $flash_message = 'User ' . $id .' has been successfully Updated.';
+
+            //Display a flash message. Flash message is stored in a session.
+            flash('register_success', $flash_message);
+            redirect('users/');
+          }
+
+          // User has not been registered.
+          else {
+            flash('register_error', 'Sorry Something went wrong.', 'alert_error');
+            redirect('users/');
+          }
+
+        } else {
+          $this->view('users/index', $data);
+        }
+
+      } else {
+
+        // Get: Show all Users with Pagination
+
+        $data = [
+          'title' => 'Edit User: ' . $id,
+          'userInfo' => $this->userModel->findById($id)
+        ];
+
+        $this->view('users/edit', $data);
+      }
+    }
+
+    public function delete($id){
+
+         // Edit User
+         if($this->userModel->delete($id)){
+
+           $flash_message = 'User ' . $id .' has been deleted.';
+
+           flash('register_success', $flash_message);
+           redirect('users/');
+         }
     }
 
     public function login(){
-      //Check for Post
+      // Check if logged in
+      if(isLoggedIn()){
+        redirect('dash/');
+      }
+
+      // POST Request. Process form.
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Sanitize POST data
@@ -153,29 +287,28 @@
           $data['errors']['password'] = 'Please enter password';
         }
 
-        // Make sure all errors are empty before processing
-        foreach ($data['errors'] as $key => $value) {
-          if(!empty($value)){
-            $error_checker = false;
-            break;
+        // Make sure errors are empty to process form
+        if (!$this->isErrors($data['errors'])) {
+
+          // If email and password match. Store user info in a variable for later use.
+          $user = $this->userModel->login($data['email'], $data['password']);
+
+          // Check if $user is not empty
+          if($user){
+            $this->createUserSession($user);
           } else {
-            $error_checker = true;
+            $data['errors']['match'] = 'Email and Password do not match';
+            $this->view('users/login', $data);
           }
         }
 
-        // Make sure error are empty to process form
-        if ($error_checker) {
-          $user = $this->userModel->login($data['email'], $data['password']);
-          if($user){
-            $this->createUserSession($user['id']);
-          }
-        } else {
-          $data['errors']['match'] = 'Email and Password do not match';
+        // Get Request. Get login page.
+        else {
           $this->view('users/login', $data);
         }
 
       } else {
-        
+
         $data = [
           'title' => 'Users',
           'email' => '',
@@ -195,22 +328,81 @@
       $this->logUserOut();
     }
 
-    private function logUserOut(){
+    // Functions
+
+    private function logUserOut() {
       unset($_SESSION['user_id']);
       session_destroy();
       redirect('users/login');
     }
 
-    private function createUserSession($id){
-      $_SESSION['user_id'] = $id;
-      redirect('portal/dash');
+    private function createUserSession($user) {
+      $_SESSION['user_id'] = $user['id'];
+      $_SESSION['user_role'] = $user['role'];
+      $_SESSION['user_avatar'] = $user['avatar'];
+      $_SESSION['user_full_name'] = $user['first_name'] . ' ' . $user['last_name'];
+      redirect('dash/');
     }
-  
-    private function isLoggedIn(){
-      if(isset($_SESSION['user_id'])){
+
+    private function mailActivator($activation_link, $email) {
+      $to      = $email;
+      $subject = 'XYCC Account Activation';
+
+      // Message
+      $message  = 'You have been registered to XYCC';
+      $message .= '<br>Please visit the following link to activate your XYCC Account: ' . $activation_link;
+      $headers = 'From: activator@xycc.edu' . "\r\n" .
+          'Reply-To: activator@xycc.edu' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
+
+      mail($to, $subject, $message, $headers);
+    }
+
+    private function mailCredentials($password, $email) {
+      $to      = $email;
+      $subject = 'XYCC Account Info';
+
+      // Message
+      $message  = 'You have been registered to XYCC<br>';
+      $message .= 'Please visit the following link to log into your XYCC Account: ' . ROOT . 'users/login' . '<br>';
+      $message .= 'Username: ' . $email . '<br>';
+      $message .= 'Password: ' . $password;
+
+      // To send HTML mail, the Content-type header must be set
+      $headers[] = 'MIME-Version: 1.0';
+      $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+      // Additional headers
+      $headers[] = 'To: <' . $email . '>';
+      $headers[] = 'From: XYCC <xycc@xycc.edu>';
+
+      if(mail($to, $subject, $message, implode("\r\n", $headers))){
         return true;
       } else {
         return false;
       }
     }
+
+    private function isErrors($errors){
+          foreach ($errors as $key => $value) {
+               if(!empty($value)){
+                    return true;
+               } else {
+                    return false;
+               }
+          }
+    }
+
+    public function randomPassword() {
+      $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+      $pass = array(); //remember to declare $pass as an array
+      $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+      for ($i = 0; $i < 8; $i++) {
+          $n = rand(0, $alphaLength);
+          $pass[] = $alphabet[$n];
+      }
+      return implode($pass); //turn the array into a string
+    }
+
+
   }

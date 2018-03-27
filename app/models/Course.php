@@ -4,7 +4,7 @@
  * User Model Class
  */
 
-class User
+class Course
 {
   // Classes
   private $db;

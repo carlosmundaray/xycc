@@ -1,5 +1,30 @@
-<?php require APP . 'views/inc/portal-header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo ROOT; ?>/public/favicon.png">
+  <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/fonts.css">
+  <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/reset.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/1d676bd406.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="<?php echo ROOT; ?>public/css/portal.css">
+  <title>
+    <?php echo SITENAME . ' | ' . $data['title']; ?>
+  </title>
+</head>
+
+<body class="overflow_hidden">
+<section class="preloader hidden">
+  <div class="top_screen move_up"></div>
+  <div class="bottom_screen move_down"></div>
+  <div class="white_icon_logo fade_out"></div>
+</section>
+<main id="main">
+
+     <div class="red_bg"></div>
 
 <section id="website" class="">
   <!-- Logo -->
@@ -16,15 +41,34 @@
   </div>
 
   <section class="form_login_container">
-    <form action="<?php echo ROOT;?>portal/login/" method="post">
-      <input type="email" name="email" placeholder="Email: <?php echo $data['errors']['email']; ?>">
-      <input type="password" name="password" placeholder="Password: <?php echo $data['errors']['password']; ?>">
+    <form action="<?php echo ROOT;?>users/login/" method="post">
+      <?php
+
+      //Display Errors
+      echo $data['errors']['email'] ? '<div class="login-error">'. $data['errors']['email'] .'</div>' : false;
+      echo $data['errors']['password'] ? '<div class="login-error">'. $data['errors']['password'] .'</div>' : false;
+      echo $data['errors']['match'] ? '<div class="login-error">'. $data['errors']['match'] .'</div>' : false;
+
+      ?>
+      <input type="email" name="email" placeholder="Email">
+      <input type="password" name="password" placeholder="Password">
       <input type="submit" name="submit" value="Log In">
-      <?php echo $data['errors']['match']; ?>
       <a href="<?php echo ROOT; ?>portal/password">Forgot Username or Password?</a>
     </form>
   </section>
 </section><!-- #website -->
 
+</main>
 
-<?php require APP . 'views/inc/portal-footer.php'; ?>
+
+<!-- scripts -->
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://use.fontawesome.com/e6e86262b4.js"></script> <!-- Icons -->
+<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+<script src="<?php echo ROOT; ?>public/js/progressbar.js"></script>
+<script src="<?php echo ROOT; ?>public/js/portal.js"></script>
+</body>
+
+</html>

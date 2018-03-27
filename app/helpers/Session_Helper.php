@@ -27,4 +27,28 @@
     }
   }
 
+  function isLoggedIn(){
+    if(isset($_SESSION['user_id'])){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function block($role, $url){
+    if($_SESSION['user_role'] == $role){
+      redirect($url);
+    }
+  }
+
+  function isAdmin(){
+    if(isset($_SESSION['user_role'])){
+      if ($_SESSION['user_role'] == 'admin') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
 ?>

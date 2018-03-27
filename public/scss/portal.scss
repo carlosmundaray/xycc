@@ -15,8 +15,9 @@ $nav_top_color: #ffffff;
 $bg_color: #23262D;
 $module_colors: #31353C;
 // Gradients
-$btn_pink_color: linear-gradient(90deg, #A747B4, #E43F48);
-$btn_grey_color: linear-gradient(90deg, #52575F, #39424E);
+$gr_pink: linear-gradient(90deg, #A747B4, #E43F48);
+$gr_grey: linear-gradient(90deg, #52575F, #39424E);
+$gr_green: linear-gradient(45deg, #00ffb8, #0072ff);
 //Text Colors
 $module_heading: #C9C9C9;
 $links_colors: #979797;
@@ -274,6 +275,7 @@ main {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-color: #eee;
         width: 100px;
         height: 100px;
         border-radius: 100px;
@@ -336,6 +338,37 @@ main {
     flex: 60px 0;
     width: 100%;
     background-color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .title{
+      flex: 1 0;
+      font-size: 0.9em;
+      color: $links_colors;
+      font-weight: 500;
+    }
+    .top_nav_menu {
+         flex: 1 0;
+         justify-content: flex-end;
+         // padding: 20px;
+         ul {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              flex-direction: row;
+              li {
+                   font-size: 0.8em;
+                   margin-left: 25px;
+                   a {
+                        color: $links_colors;
+                   }
+                   i {
+                        margin-right: 7px;
+                   }
+              }
+         }
+    }
   }
 #content {
     flex: 1 0;
@@ -530,7 +563,7 @@ main {
   justify-content: flex-end;
 
   .button {
-    background: $btn_pink_color;
+    background: $gr_pink;
     padding: 3px 20px;
     color: $white;
     font-size: 0.7em;
@@ -670,10 +703,94 @@ main {
 }
 
 .new_user_module {
-  flex: 4 0;
+  flex: 4 0!important;
+  height: 100%;
   width: 100%;
   flex-direction: column;
   margin-left: 0!important;
+}
+
+.edit_user_stats {
+  flex: 1 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  padding: 20px;
+  display: flex;
+
+  .profile_container {
+    flex: 1 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+         .profile_picture {
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-color: #eee;
+           width: 100px;
+           height: 100px;
+           border-radius: 100px;
+           margin-bottom: 15px;
+         }
+
+         .name {
+           font-size: 0.8em;
+           color: $module_heading;
+           font-weight: 500;
+           margin-bottom: 5px;
+           line-height: 15px;
+         }
+
+         .id,
+         .role {
+           font-size: 0.8em;
+           color: $links_colors;
+           font-weight: 300;
+           margin-bottom: 5px;
+         }
+     }
+
+     .credit_container {
+          flex: 1 0;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin-top: 20px;
+          position: relative;
+
+          #progress_circle {
+               margin-top: 0px!important;
+               width: 7vw;
+               height: 7vw;
+          }
+
+          .progressbar_container {
+               margin-top: 20px;
+          }
+     }
+
+     .btn_container {
+          flex: 1 0;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 20px;
+
+          .btn {
+               margin-top: 10px;
+               width: 100%;
+          }
+     }
+
 }
 
 // Forms
@@ -706,6 +823,7 @@ main {
     font-size: 0.8em;
   }
 }
+
 .forms {
   width: 100%;
   min-width: 220px;
@@ -742,27 +860,43 @@ main {
     outline:none;
   }
 
-  input[type="submit"] {
-    background: $btn_pink_color;
-    color: $white;
-    padding: 10px;
-    border-radius: 100px!important;
-    cursor: pointer;
-    margin-bottom: 0;
-    width: 30%;
-  }
   .half_field {
     flex: 50% 0;
   }
-  
+
   .full_field {
     flex: 100% 0;
   }
-  
+
   .third_field {
     flex: 33.333% 0;
   }
 }
+
+input[type="submit"], .btn {
+ color: $white;
+ padding: 10px;
+ border-radius: 100px!important;
+ cursor: pointer;
+ margin-bottom: 0;
+ font-size: 0.7em;
+ text-align: center;
+ line-height: 15px;
+ border: 0px;
+}
+
+.btn_pink {
+     background: $gr_pink;
+}
+
+.btn_green {
+     background: $gr_green;
+}
+
+.btn_red {
+     background: $gr_pink;
+}
+
 
 .user_stats_container {
   flex: 1 0;
@@ -777,7 +911,7 @@ main {
     i {
       color: $module_heading;
     }
-  }  
+  }
 }
 
 
@@ -802,7 +936,7 @@ table {
     padding: 10px;
     color: $links_colors;
     a {
-      background: $btn_pink_color;
+      background: $gr_pink;
       padding: 5px 20px;
       color: #fff;
       border-radius: 30px;
@@ -862,7 +996,7 @@ table {
 
 .alert_success {
   color: #fff;
-  background: linear-gradient(45deg, #00ffb8, #0072ff);
+  background: $gr_green;
 }
 
 .alert_error {

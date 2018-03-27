@@ -1,4 +1,4 @@
-<?php require APP . 'views/inc/header.php'; ?>
+<?php require APP . 'views/layouts/pages/header.php'; ?>
 
 <section class="preloader with_opacity"><div class="logo red_full_logo"></div></section>
 <section id="website" class="no_site">
@@ -15,7 +15,7 @@
 
   <!-- Login Button -->
   <div class="login_wrap no_opacity">
-    <a href="<?php echo ROOT; ?>portal/login">Login to Portal</a>
+    <a href="<?php echo ROOT; ?>users/login">Login to Portal</a>
     <div class="login_line"></div>
   </div>
 
@@ -40,4 +40,4 @@
 </section><!-- #website -->
 
 
-<?php require APP . 'views/inc/footer.php'; ?>
+<?php require APP . 'views/layouts/pages/footer.php'; ?>

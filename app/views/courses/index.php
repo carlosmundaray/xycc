@@ -16,35 +16,11 @@
                           <th width="80">Action</th>
                       </tr>
 
-                      <?php foreach ($data['userList'] as $user) { ?>
-                      <tr>
-                          <td>
-                              <?php echo $user[ 'id']; ?>
-                          </td>
-                          <td>
-                              <div class="avatar_name_container">
-                                  <div class="avatar" style="background-image: url('<?php echo $user['avatar']; ?>'); "></div>
-                                  <div class="full_name">
-                                      <?php echo ucwords($user[ 'first_name']) . " " . ucwords($user[ 'last_name']); ?>
-                                  </div>
-                              </div>
-                          </td>
-                          <td>
-                              <?php echo ucwords($user[ 'gender']); ?>
-                          </td>
-                          <td>
-                              <?php echo ucwords($user[ 'role']); ?>
-                          </td>
-                          <td><a href="<?php echo ROOT . 'users/edit/' . $user['id']; ?>" class="btngreen">Edit</a>
-                          </td>
-                      </tr>
-                      <?php } ?>
-
                   </table>
 
               </div>
               <div class="pagination_container">
-                <?php echo $data['paginationLinks']; ?>
+
               </div>
           </section>
       </section>
@@ -52,23 +28,12 @@
           <section class="modules user_stats_module">
               <h1 class="module_heading">User Stats</h1>
               <div class="user_stats_container">
-                  <div class="half_field">
-                  Total: <i><?php echo $data['totalUsers']; ?></i>
-                  </div>
-                  <div class="half_field">
-                  Admins: <i><?php echo $data['userAdminCount']; ?></i>
-                  </div>
-                  <div class="half_field">
-                  Teachers: <i><?php echo $data['userTeacherCount']; ?></i>
-                  </div>
-                  <div class="half_field">
-                  Students: <i><?php echo $data['userStudentCount']; ?></i>
-                  </div>
+
               </div>
           </section>
           <section class="modules new_user_module">
               <h1 class="module_heading">Add New User</h1>
-              <form class="forms" action="<?php ROOT . 'users'; ?>" method="post">
+              <form class="forms" action="" method="post">
                 <div class="half_field">
                   <label for="first_name">First Name</label>
                   <input type="text" id="first_name" name="first_name" required>
@@ -116,12 +81,6 @@
                   <label for="state">State</label>
                   <select name="state" id="state">
                     <option value="">-</option>
-
-                    <?php require_once APP . 'helpers/Data_Helper.php'; ?>
-                    <?php foreach ($states as $state => $state_full) {
-                      echo '<option value="' .$state . '">' . $state_full . '</option>';
-                    } ?>
-
                   </select>
                 </div>
                 <div class="third_field">

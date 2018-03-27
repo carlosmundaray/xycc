@@ -1,34 +1,7 @@
-<?php require APP . 'views/inc/portal-header.php'; ?>
+<?php require APP . 'views/layouts/portal/header.php'; ?>
 
-<div class="red_bg"></div>
-<section id="website" class="">
-  <section id="portal_container">
-    <nav id="main_nav">
-      <section class="logo_container">
-        <div class="logo red_full_logo"></div>
-      </section>
-      <section class="link_container">
-        <div class="profile_container">
-          <div class="profile_picture" style="background-image: url('<?php echo ROOT . '/img/users/901282.jpg'; ?>');"></div>
-          <a href="#" class="name">Nagisa Tomoya</a>
-          <div class="role">Role: Student</div>
-          <div class="id">Id: 901282</div>
-        </div>
-        <?php require APP . 'views/inc/nav-students.php'; ?>
-      </section>
-    </nav>
-    <section id="portal_content">
-      <nav id="top_nav">
-        <?php 
-        
-        if(isset($_SESSION['user_id'])){
-          echo $_SESSION['user_id'];
-        }
-        
-        ?>
-      </nav>
-      <section id="content">
-        <section class="top_section_module">
+<section id="content">
+     <section class="top_section_module">
           <!-- Major Progress -->
           <section class="modules flex_column_top_center">
             <h1 class="module_heading">Major Credit Progress</h1>
@@ -152,8 +125,8 @@
               <a href="#" class="button">View More</a>
             </div>
           </section>
-        </section>
-        <section class="bottom_section_module">
+          </section>
+          <section class="bottom_section_module">
           <!-- Events -->
           <section class="modules">
             <div class="event_container">
@@ -192,7 +165,7 @@
                 <div class="message_image" style="background-image: url(<?php echo ROOT . 'img/users/4.jpg'; ?>)"></div>
                 <div class="message_info">
                   <h1>Networking Fundamentals</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor layoutsididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
               </a>
               <a href="<?php echo ROOT; ?>" class="recent_messages">
@@ -200,7 +173,7 @@
                 <div class="message_image" style="background-image: url(<?php echo ROOT . 'img/users/4.jpg'; ?>)"></div>
                 <div class="message_info">
                   <h1>Networking Fundamentals</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor layoutsididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
               </a>
               <a href="<?php echo ROOT; ?>" class="recent_messages">
@@ -208,7 +181,7 @@
                 <div class="message_image" style="background-image: url(<?php echo ROOT . 'img/users/4.jpg'; ?>)"></div>
                 <div class="message_info">
                   <h1>Networking Fundamentals</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor layoutsididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
               </a>
               <a href="<?php echo ROOT; ?>" class="recent_messages">
@@ -216,7 +189,7 @@
                 <div class="message_image" style="background-image: url(<?php echo ROOT . 'img/users/4.jpg'; ?>)"></div>
                 <div class="message_info">
                   <h1>Networking Fundamentals</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor layoutsididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
               </a>
               <a href="<?php echo ROOT; ?>" class="recent_messages">
@@ -224,7 +197,7 @@
                 <div class="message_image" style="background-image: url(<?php echo ROOT . 'img/users/4.jpg'; ?>)"></div>
                 <div class="message_info">
                   <h1>Networking Fundamentals</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor layoutsididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
               </a>
             </div>
@@ -232,11 +205,7 @@
               <a href="#" class="button">View More</a>
             </div>
           </section>
-        </section>
-      </section>
-    </section>
-  </section>
-</section><!-- #website -->
+     </section>
+</section>
 
-
-<?php require APP . 'views/inc/portal-footer.php'; ?>
+<?php require APP . 'views/layouts/portal/footer.php'; ?>
