@@ -663,6 +663,10 @@ main {
   margin-right: 7px;
 }
 
+.simplebar-scrollbar:before {
+     background: transparent!important;
+}
+
 //Progress Bars
 #progress_circle {
   width: 10vw;
@@ -676,7 +680,7 @@ main {
   justify-content: space-between;
   align-items: center;
   display: flex;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 #total_credits {
@@ -708,6 +712,10 @@ main {
   width: 100%;
   flex-direction: column;
   margin-left: 0!important;
+  #flash_msg {
+     flex: 56px 0;
+     margin: 0;
+ }
 }
 
 .edit_user_stats {

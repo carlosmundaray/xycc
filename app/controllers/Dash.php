@@ -2,9 +2,9 @@
   class Dash extends Controller {
 
     public function __construct(){
-      if(!isLoggedIn()){
-        redirect('users/login');
-      }
+      // if(!isLoggedIn()){
+      //   redirect('users/login');
+      // }
     }
 
     public function index(){

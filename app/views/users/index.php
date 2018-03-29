@@ -16,7 +16,8 @@
                           <th width="80">Action</th>
                       </tr>
 
-                      <?php foreach ($data['userList'] as $user) { ?>
+                      <?php foreach ($data['userList'] as $user) {
+    ?>
                       <tr>
                           <td>
                               <?php echo $user[ 'id']; ?>
@@ -38,7 +39,8 @@
                           <td><a href="<?php echo ROOT . 'users/edit/' . $user['id']; ?>" class="btngreen">Edit</a>
                           </td>
                       </tr>
-                      <?php } ?>
+                      <?php
+} ?>
 
                   </table>
 
@@ -68,7 +70,7 @@
           </section>
           <section class="modules new_user_module">
               <h1 class="module_heading">Add New User</h1>
-              <form class="forms" action="<?php ROOT . 'users'; ?>" method="post">
+              <form class="forms" action="<?php echo ROOT . 'users/create'; ?>" method="post">
                 <div class="half_field">
                   <label for="first_name">First Name</label>
                   <input type="text" id="first_name" name="first_name" required>
@@ -119,8 +121,8 @@
 
                     <?php require_once APP . 'helpers/Data_Helper.php'; ?>
                     <?php foreach ($states as $state => $state_full) {
-                      echo '<option value="' .$state . '">' . $state_full . '</option>';
-                    } ?>
+        echo '<option value="' .$state . '">' . $state_full . '</option>';
+    } ?>
 
                   </select>
                 </div>

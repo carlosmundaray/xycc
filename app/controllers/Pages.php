@@ -1,22 +1,34 @@
 <?php
-  class Pages extends Controller {
-    public function __construct(){
+  class Pages extends Controller
+  {
+      public function __construct()
+      {
+      }
 
-    }
-
-    public function index(){
-      $data = [
+      public function index()
+      {
+          $data = [
         'title' => 'Home'
       ];
 
-      $this->view('pages/index', $data);
-    }
+          $this->view('pages/index', $data);
+      }
 
-    public function about(){
-      $data = [
+      public function about()
+      {
+          $data = [
         'title' => 'About'
       ];
 
-      $this->view('pages/about', $data);
-    }
+          $this->view('pages/about', $data);
+      }
+
+      public function get404()
+      {
+          $data = [
+        'title' => 'Page Not Found'
+      ];
+
+          $this->view('pages/404', $data);
+      }
   }

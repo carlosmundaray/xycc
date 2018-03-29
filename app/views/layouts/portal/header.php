@@ -70,7 +70,7 @@
                      <div class="title"><?php echo $data['title']; ?></div>
                      <nav class="top_nav_menu">
                           <ul>
-                               <li><a href="<?php echo ROOT . 'portal/'; ?>"><i class="icon fa fa-home"></i>Xycc</a></li>
+                               <li><a href="<?php echo ROOT; ?>"><i class="icon fa fa-home"></i>Xycc</a></li>
                                <li><a href="<?php echo ROOT . 'settings/'; ?>"><i class="icon fa fa-sliders"></i>Settings</a></li>
                                <li><a href="<?php echo ROOT . 'users/logout'; ?>"><i class="icon fa fa-lock"></i>Log Out</a></li>
                           </ul>

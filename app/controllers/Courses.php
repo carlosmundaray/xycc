@@ -9,13 +9,6 @@
     // View and Register [GET/POST]
     public function index(){
 
-      if(isLoggedIn()){
-        block('student','dash');
-        block('teacher','dash');
-      } else {
-        redirect('users/login');
-      }
-
       //Check for Post
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

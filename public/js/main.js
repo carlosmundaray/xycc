@@ -61,7 +61,7 @@ $(document).ready(function() {
     cacheLength: 2,
     onBefore: function($currentTarget, $container) {},
     onStart: {
-      duration: 2000,
+      duration: 1000,
       render: function($container){
         console.log($container);
         $('#main_content').addClass('no_opacity');
@@ -99,48 +99,5 @@ $(document).ready(function() {
     }
   });
 
-  $('#main').smoothState({
-    anchors: 'a.home_page',
-    prefetch: true,
-    cacheLength: 2,
-    onBefore: function($currentTarget, $container) {},
-    onStart: {
-      duration: 2000,
-      render: function($container){
-        console.log($container);
-        $('#main_content').addClass('no_opacity');
-        $('.logo_full_wrap').addClass('no_opacity');
-        $('.apply_btn').addClass('no_opacity');
-        $('.login_wrap').addClass('no_opacity');
-        $('.circle:not(.selected)').css('opacity', '0');
-        $('.gallery_circles').removeClass("full_gallery");
-        $('.selected').remoceClass("full_circle");
-      }
-    },
-    onProgress: {
-      // How long this animation takes
-      duration: 0,
-      // A function that dictates the animations that take place
-      render: function ($container) {
-
-      }
-    },
-    onReady: {
-      duration: 0,
-      // `$container` is a `jQuery Object` of the the current smoothState container
-      // `$newContent` is a `jQuery Object` of the HTML that should replace the existing container's HTML.
-      render: function ($container, $newContent) {
-        // Update the HTML on the page
-        $container.html($newContent);
-
-      }
-    },
-    onAfter: function($container, $newContent) {
-      removeClassDelayObj($newContent.find('.logo_full_wrap'), 'no_opacity', 500);
-      removeClassDelayObj($newContent.find('.apply_btn'), 'no_opacity', 500);
-      removeClassDelayObj($newContent.find('.login_wrap'), 'no_opacity', 500);
-      removeClassDelayObj($newContent.find('#main_content'), 'no_opacity', 1000);
-    }
-  });
 
 })

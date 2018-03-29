@@ -1,19 +1,26 @@
 <?php
 
-$route->add('/', 'Pages@index');
-$route->add('/pages/about', 'Pages@about');
+$route->add('GET', '/', 'Pages@index');
+$route->add('GET', '/pages/about', 'Pages@getAbout');
 
 // Dash
-$route->add('/dash', 'Dash@index');
+$route->add('GET', '/dash', 'Dash@index', true, ['admin', 'teacher', 'student']);
 
 // Users
-$route->add('/users', 'Users@index', ['admin']);
-$route->add('/users/edit', 'Users@edit', ['admin']);
-$route->add('/users/create', 'Users@create', ['admin']);
-$route->add('/users/login', 'Users@login', ['admin']);
+$route->add('GET', '/users', 'Users@getUsers', true, ['admin']);
+$route->add('GET', '/users/edit', 'Users@getUser', true, ['admin']);
+$route->add('POST', '/users/update', 'Users@putUser', true, ['admin']);
+$route->add('POST', '/users/create', 'Users@postUser', true, ['admin']);
+$route->add('GET', '/users/delete', 'Users@deleteUser', true, ['admin']);
+
+// User Public
+$route->add('GET', '/users/login', 'Users@login');
+$route->add('GET', '/users/logout', 'Users@logout', true, ['admin', 'teacher', 'student']);
 
 // Courses
-$route->add('/courses', 'Courses@index', ['admin', 'teacher', 'student']);
+$route->add('GET', '/courses', 'Courses@index', true, ['admin', 'teacher', 'student']);
 
 
- ?>
+// Set 404 Page.
+// Make sure to have this as your last call
+$route->set404('Pages@get404');
