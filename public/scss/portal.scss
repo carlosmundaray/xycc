@@ -100,6 +100,12 @@ html {
 .padding20 {
   padding: 20px;
 }
+.padding_top_none  {
+  padding-top: 0px!important;
+}
+.margin_none {
+     margin: 0!important;
+}
 .disabled {
   display: none;
 }
@@ -410,6 +416,7 @@ main {
   height: 100%;
 }
 
+
 // Recent Courses Module
 .module_list_container {
   width: 100%;
@@ -471,6 +478,14 @@ main {
 }
 .left_line_hover.active {
 
+}
+
+.courses_buttons {
+     flex: 1 0;
+     padding: 20px;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
 }
 
 // Weather
@@ -625,6 +640,12 @@ main {
   margin-left: 15px;
   flex: 1 0;
   position: relative;
+  .btn {
+       margin-bottom: 10px;
+  }
+  .btn:last-child {
+      margin-bottom: 0;
+      }
 }
 .modules:first-of-type {
   margin-left: 0;
@@ -635,6 +656,92 @@ main {
   color: $module_heading;
   font-size: 0.8em;
   font-weight: 400;
+}
+.module_heading_options {
+    width: 100%;
+    padding: 20px;
+    color: #C9C9C9;
+    display: flex;
+    flex-direction: row;
+    h1 {
+          flex: 1 0;
+          color: $module_heading;
+          font-size: 0.8em;
+          font-weight: 400;
+    }
+    select {
+         background-color: transparent;
+         border: 0;
+         color: $module_heading;
+    }
+}
+
+.class_heading {
+     width: 100%;
+     height: 77px;
+     background: url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-0.3.5…EyMDd9&s=e5a31d0…&auto=format&fit=crop&w=1500&q=80);
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+
+.course_content {
+     flex: 1 0;
+     // padding: 20px;
+     margin: 20px 0px 20px 20px;
+     .content_container {
+          width: 100%;
+          padding: 20px;
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          .icon {
+               width: 50px;
+               height: 50px;
+               flex: 50px 0;
+               margin-right: 20px;
+               border-radius: 50px;
+               background: url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-0.3.5…EyMDd9&s=e5a31d0…&auto=format&fit=crop&w=1500&q=80);
+               background-position: center;
+               background-size: cover;
+               background-repeat: no-repeat;
+          }
+          .content {
+               flex: 1 0;
+               display: flex;
+               justify-content: center;
+               // align-items: center;
+               flex-direction: column;
+               h1 {
+                    font-size: 0.9em;
+                    margin-bottom: 10px;
+               }
+               p {
+                    font-size: 0.8em;
+                    color: $links_colors;
+               }
+          }
+     }
+}
+
+.flex_w_1 {
+     flex: 1 0!important;
+}
+
+.flex_w_2 {
+     flex: 2 0!important;
+}
+
+.flex_w_3 {
+     flex: 3 0!important;
+}
+
+.flex_w_4 {
+     flex: 4 0!important;
+}
+
+.flex_30_vh {
+     flex: 30vh 0!important;
 }
 
 //Users
@@ -704,6 +811,44 @@ main {
   width: 100%;
   flex-direction: column;
   margin-bottom: 15px;
+
+  .profile_container {
+   flex: 1 0;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 20px;
+
+         .profile_picture {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: #eee;
+          width: 10vh;
+          height: 10vh;
+          border-radius: 100px;
+          margin-bottom: 15px;
+         }
+
+         .name {
+          font-size: 0.8em;
+          color: $module_heading;
+          font-weight: 500;
+          margin-bottom: 5px;
+          line-height: 15px;
+         }
+
+         .id,
+         .role {
+          font-size: 0.8em;
+          color: $links_colors;
+          font-weight: 300;
+          margin-bottom: 5px;
+         }
+     }
+
 }
 
 .new_user_module {
@@ -727,39 +872,39 @@ main {
   display: flex;
 
   .profile_container {
-    flex: 1 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
+   flex: 1 0;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 20px;
 
          .profile_picture {
-           background-size: cover;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-color: #eee;
-           width: 100px;
-           height: 100px;
-           border-radius: 100px;
-           margin-bottom: 15px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-color: #eee;
+          width: 10vh;
+          height: 10vh;
+          border-radius: 100px;
+          margin-bottom: 15px;
          }
 
          .name {
-           font-size: 0.8em;
-           color: $module_heading;
-           font-weight: 500;
-           margin-bottom: 5px;
-           line-height: 15px;
+          font-size: 0.8em;
+          color: $module_heading;
+          font-weight: 500;
+          margin-bottom: 5px;
+          line-height: 15px;
          }
 
          .id,
          .role {
-           font-size: 0.8em;
-           color: $links_colors;
-           font-weight: 300;
-           margin-bottom: 5px;
+          font-size: 0.8em;
+          color: $links_colors;
+          font-weight: 300;
+          margin-bottom: 5px;
          }
      }
 
@@ -794,11 +939,43 @@ main {
           margin-top: 20px;
 
           .btn {
-               margin-top: 10px;
+               // margin-top: 10px;
                width: 100%;
           }
      }
 
+}
+
+
+
+.department_list_module {
+     flex: 2 0!important;
+     height: 100%;
+     width: 100%;
+     flex-direction: column;
+     margin-left: 0!important;
+     margin-bottom: 0px;
+     ul {
+          width: 100%;
+          flex: 1 0;
+          li {
+               font-size: 0.8em;
+               padding: 0px 20px;
+               a {
+                    color: $links_colors;
+                    width: 100%;
+                    display: block;
+               }
+               .selected {
+                    color: $red;
+                    font-weight: 700;
+               }
+          }
+     }
+}
+
+.courses_add_new_module {
+     margin: 0;
 }
 
 // Forms
@@ -868,6 +1045,18 @@ main {
     outline:none;
   }
 
+  textarea {
+       width: 100%;
+      padding: 5px;
+      background-color: transparent;
+      border: 0;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 0px!important;
+      border-bottom: 1px solid #eee;
+      -webkit-appearance: none;
+  }
+
   .half_field {
     flex: 50% 0;
   }
@@ -906,7 +1095,7 @@ input[type="submit"], .btn {
 }
 
 
-.user_stats_container {
+.stats_container {
   flex: 1 0;
   display: flex;
   flex-wrap: wrap;
@@ -916,10 +1105,33 @@ input[type="submit"], .btn {
     color: $links_colors;
     font-size: 0.9em;
     text-align: left;
-    i {
-      color: $module_heading;
-    }
   }
+  i {
+   color: $module_heading;
+  }
+  ul {
+       width: 100%;
+       li {
+           color: $links_colors;
+           font-size: 0.8em;
+           text-align: left;
+           margin-bottom: 10px;
+       }
+   }
+   .btn_container {
+        flex: 1 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+        .btn {
+             margin-top: 10px;
+             width: 100%;
+        }
+   }
+
 }
 
 
@@ -943,12 +1155,14 @@ table {
     vertical-align: middle;
     padding: 10px;
     color: $links_colors;
-    a {
-      background: $gr_pink;
+    .btn {
       padding: 5px 20px;
       color: #fff;
       border-radius: 30px;
       font-size: 0.8em;
+    }
+    .user_link {
+          color: $links_colors;
     }
   }
   tr:nth-child(even){

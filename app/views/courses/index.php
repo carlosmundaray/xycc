@@ -1,102 +1,60 @@
 <?php require APP . 'views/layouts/portal/header.php'; ?>
 
 <section id="content" class="flex_row">
-      <section class="left_section_module">
+      <section class="left_section_module flex_w_4">
           <section class="modules">
-              <h1 class="module_heading">List of Users</h1>
+              <h1 class="module_heading">List of Courses</h1>
               <?php flash('register_success'); ?>
               <?php flash('register_error'); ?>
               <div class="user_table" data-simplebar>
                   <table>
                       <tr>
-                          <th width="50">ID</th>
+                          <th width="40">ID</th>
                           <th>Name</th>
-                          <th width="80">Gender</th>
-                          <th width="130">Role</th>
+                          <th width="170">Department</th>
+                          <th width="90"># Classes</th>
                           <th width="80">Action</th>
                       </tr>
+
+                       <?php foreach ($data['courses'] as $course) { ?>
+                            <tr>
+                                 <td><?php echo $course['id']; ?></td>
+                                 <td><?php echo $course['name']; ?></td>
+                                 <td><?php echo $data['departmentInfo'][$course['department_id']]['name']; ?></td>
+                                 <td><?php echo $course['department_id']; ?></td>
+                                 <td><a href="<?php echo ROOT . 'courses/edit/' . $course['id']; ?>" class="btn btn_red">View</a></td>
+                            </tr>
+                       <?php } ?>
 
                   </table>
 
               </div>
               <div class="pagination_container">
-
+                   <?php echo $data['pagination']; ?>
               </div>
           </section>
       </section>
       <section class="right_section_module">
           <section class="modules user_stats_module">
-              <h1 class="module_heading">User Stats</h1>
-              <div class="user_stats_container">
-
+              <h1 class="module_heading">Courses / Classes Stats</h1>
+              <div class="stats_container">
+                 <ul>
+                      <li>Total Courses: 12</li>
+                      <li>Total Classes: 15</li>
+                 </ul>
+                 <section class="btn_container">
+                      <a href="<?php echo ROOT . 'users/'; ?>" class="btn btn_red">Add New Course</a>
+                 </section>
               </div>
           </section>
-          <section class="modules new_user_module">
-              <h1 class="module_heading">Add New User</h1>
-              <form class="forms" action="" method="post">
-                <div class="half_field">
-                  <label for="first_name">First Name</label>
-                  <input type="text" id="first_name" name="first_name" required>
-                </div>
-                <div class="half_field">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" id="last_name" name="last_name" required>
-                </div>
-                <div class="half_field">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required>
-                </div>
-                <div class="half_field">
-                  <label for="phone">Phone Number</label>
-                  <input type="number" id="phone" name="phone" required>
-                </div>
-                <div class="half_field">
-                  <label for="role">Role</label>
-                  <select id="role" name="role" required>
-                      <option value="student">Student</option>
-                      <option value="teacher">Teacher</option>
-                      <option value="admin">Admin</option>
-                  </select>
-                </div>
-                <div class="half_field">
-                  <label for="mojor">Major</label>
-                  <select id="major" name="major">
-                      <option value="0">None</option>
-                      <option value="1">Computer Science</option>
-                      <option value="2">Networking</option>
-                      <option value="3">Web & Mobile App</option>
-                      <option value="4">Math</option>
-                      <option value="5">English</option>
-                  </select>
-                </div>
-                <div class="half_field">
-                  <label for="address">Address</label>
-                  <input type="text" id="address" name="address" required>
-                </div>
-                <div class="half_field">
-                  <label for="city">City</label>
-                  <input type="text" id="city" name="city" required>
-                </div>
-                <div class="third_field">
-                  <label for="state">State</label>
-                  <select name="state" id="state">
-                    <option value="">-</option>
-                  </select>
-                </div>
-                <div class="third_field">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" required>
-                </div>
-                <div class="third_field">
-                  <label for="gender">Gender</label>
-                  <select name="gender" id="gender">
-                    <option value="U">Unknown</option>
-                    <option value="M">M</option>
-                    <option value="F">F</option>
-                  </select>
-                </div>
-                <input type="submit" id="submit" name="submit" class="btn btn_green" value="Add User">
-              </form>
+          <section class="modules department_list_module">
+              <h1 class="module_heading">Departments</h1>
+              <ul data-simplebar>
+                   <li><a href="" class="selected">All</a></li>
+                    <?php foreach ($data['departments'] as $department) { ?>
+                        <li><a href="?department=<?php echo $department['id'] ?>" class=""><?php echo $department['name'] . ' (' . $data['departmentCourseCount'][$department['id']] . ')'; ?></a></li>
+                    <?php } ?>
+              </ul>
           </section>
       </section>
 </section>

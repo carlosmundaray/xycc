@@ -41,7 +41,7 @@
   </div>
 
   <section class="form_login_container">
-    <form action="<?php echo ROOT;?>users/login/" method="post">
+    <form action="<?php echo ROOT;?>users/auth/" method="post">
       <?php
 
       //Display Errors

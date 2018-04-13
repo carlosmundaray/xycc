@@ -16,8 +16,7 @@
                           <th width="80">Action</th>
                       </tr>
 
-                      <?php foreach ($data['userList'] as $user) {
-    ?>
+                      <?php foreach ($data['userList'] as $user) { ?>
                       <tr>
                           <td>
                               <?php echo $user[ 'id']; ?>
@@ -36,11 +35,10 @@
                           <td>
                               <?php echo ucwords($user[ 'role']); ?>
                           </td>
-                          <td><a href="<?php echo ROOT . 'users/edit/' . $user['id']; ?>" class="btngreen">Edit</a>
+                          <td><a href="<?php echo ROOT . 'users/edit/' . $user['id']; ?>" class="btn btn_green">Edit</a>
                           </td>
                       </tr>
-                      <?php
-} ?>
+                      <?php } ?>
 
                   </table>
 
@@ -53,7 +51,7 @@
       <section class="right_section_module">
           <section class="modules user_stats_module">
               <h1 class="module_heading">User Stats</h1>
-              <div class="user_stats_container">
+              <div class="stats_container">
                   <div class="half_field">
                   Total: <i><?php echo $data['totalUsers']; ?></i>
                   </div>
@@ -120,9 +118,7 @@
                     <option value="">-</option>
 
                     <?php require_once APP . 'helpers/Data_Helper.php'; ?>
-                    <?php foreach ($states as $state => $state_full) {
-        echo '<option value="' .$state . '">' . $state_full . '</option>';
-    } ?>
+                    <?php foreach ($states as $state => $state_full) { echo '<option value="' .$state . '">' . $state_full . '</option>'; } ?>
 
                   </select>
                 </div>

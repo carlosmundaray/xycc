@@ -50,6 +50,13 @@ class User
     return $this->db->single();
   }
 
+  public function findAllByRole($role){
+    $query = 'SELECT * FROM users WHERE role = :role';
+    $this->db->query($query);
+    $this->db->bind(':role', $role);
+    return $this->db->resultset();
+  }
+
   public function registerUser($data) {
     $query = 'INSERT INTO users ';
     $query .= '( first_name, last_name, email, password, role, gender, avatar, address, city, state, zip, phone, activation_code, active )';

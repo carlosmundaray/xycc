@@ -226,58 +226,6 @@
               redirect('dash');
           }
 
-          // POST Request. Process form.
-          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        // Sanitize POST data
-              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-              $data = [
-          'title' => 'Login',
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),
-          'errors' => [
-            'email' => '',
-            'password' => '',
-            'match' => ''
-          ]
-        ];
-
-              // Validate Email
-              if (empty($data['email'])) {
-                  $data['errors']['email'] = 'Please enter Email';
-              } else {
-                  // Check if User Exist
-                  if (!$this->userModel->findUserByEmail($data['email'])) {
-                      $data['errors']['email'] = "Email isn't registered into our system";
-                  }
-              }
-
-              // Validate Password
-              if (empty($data['password'])) {
-                  $data['errors']['password'] = 'Please enter password';
-              }
-
-              // Make sure errors are empty to process form
-              if (!$this->isErrors($data['errors'])) {
-
-          // If email and password match. Store user info in a variable for later use.
-                  $user = $this->userModel->login($data['email'], $data['password']);
-
-                  // Check if $user is not empty
-                  if ($user) {
-                      $this->createUserSession($user);
-                  } else {
-                      $data['errors']['match'] = 'Email and Password do not match';
-                      $this->view('users/login', $data);
-                  }
-              }
-
-              // Get Request. Get login page.
-              else {
-                  $this->view('users/login', $data);
-              }
-          } else {
               $data = [
           'title' => 'Users',
           'email' => '',
@@ -286,10 +234,55 @@
             'email' => '',
             'password' => '',
             'match' => ''
-          ]
-        ];
+               ]
+          ];
 
-              $this->view('users/login', $data);
+           $this->view('users/login', $data);
+      }
+
+      public function auth(){
+
+         // Sanitize POST data
+
+          $data = [
+               'title' => 'Login',
+               'email' => trim($_POST['email']),
+               'password' => trim($_POST['password']),
+               'errors' => [
+                    'email' => '',
+                    'password' => '',
+                    'match' => ''
+               ]
+          ];
+
+          // Validate Email
+          if (empty($data['email'])) {
+              $data['errors']['email'] = 'Please enter Email';
+          } else {
+              // Check if User Exist
+              if (!$this->userModel->findUserByEmail($data['email'])) {
+                  $data['errors']['email'] = "Email isn't registered into our system";
+              }
+          }
+
+          // Validate Password
+          if (empty($data['password'])) {
+              $data['errors']['password'] = 'Please enter password';
+          }
+
+          // Make sure errors are empty to process form
+          if (!$this->isErrors($data['errors'])) {
+
+          // If email and password match. Store user info in a variable for later use.
+              $user = $this->userModel->login($data['email'], $data['password']);
+
+              // Check if $user is not empty
+              if ($user) {
+                  $this->createUserSession($user);
+              } else {
+                  $data['errors']['match'] = 'Email and Password do not match';
+                  $this->view('users/login', $data);
+              }
           }
       }
 
