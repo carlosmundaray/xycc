@@ -4,18 +4,18 @@
 
     }
 
-    public function index(){
+    public function getProposal(){
       $data = [
         'title' => 'Docs'
       ];
-      $this->view('docs/index', $data);
+      $this->view('docs/proposal', $data);
     }
 
-    public function database(){
+    public function getCaseStudy(){
       $data = [
         'title' => 'Docs: Database'
       ];
-      $this->view('docs/database', $data);
+      $this->view('docs/casestudy', $data);
     }
 
   }

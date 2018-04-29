@@ -51,4 +51,24 @@
     }
   }
 
+  function isTeacher(){
+    if(isset($_SESSION['user_role'])){
+      if ($_SESSION['user_role'] == 'teacher') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  function isStudent(){
+    if(isset($_SESSION['user_role'])){
+      if ($_SESSION['user_role'] == 'student') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
 ?>

@@ -45,6 +45,13 @@ class ClassModel
         return $this->db->single();
     }
 
+    public function findByTeacherSemester($id, $semester){
+         $query = 'SELECT * FROM classes WHERE teacher_id = :id AND semester = :semester ORDER BY course_id';
+         $this->db->query($query);
+         $this->db->bind(':id', $id);
+         $this->db->bind(':semester', $semester);
+         return $this->db->resultset();
+    }
     public function registerUser($data)
     {
         $query = 'INSERT INTO users ';

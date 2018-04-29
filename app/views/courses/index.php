@@ -7,7 +7,7 @@
               <?php flash('register_success'); ?>
               <?php flash('register_error'); ?>
               <div class="user_table" data-simplebar>
-                  <table>
+                  <table class="course_table">
                       <tr>
                           <th width="40">ID</th>
                           <th>Name</th>
@@ -20,7 +20,7 @@
                             <tr>
                                  <td><?php echo $course['id']; ?></td>
                                  <td><?php echo $course['name']; ?></td>
-                                 <td><?php echo $data['departmentInfo'][$course['department_id']]['name']; ?></td>
+                                 <td><?php echo $data['course_departments'][$course['id']]['name']; ?></td>
                                  <td><?php echo $course['department_id']; ?></td>
                                  <td><a href="<?php echo ROOT . 'courses/edit/' . $course['id']; ?>" class="btn btn_red">View</a></td>
                             </tr>
@@ -50,9 +50,9 @@
           <section class="modules department_list_module">
               <h1 class="module_heading">Departments</h1>
               <ul data-simplebar>
-                   <li><a href="" class="selected">All</a></li>
+                   <li><a href="<?php echo ROOT . 'courses/all' ?>" class="<?php echo ($data['department_name'] == 'all') ? 'selected' : false; ?>">All</a></li>
                     <?php foreach ($data['departments'] as $department) { ?>
-                        <li><a href="?department=<?php echo $department['id'] ?>" class=""><?php echo $department['name'] . ' (' . $data['departmentCourseCount'][$department['id']] . ')'; ?></a></li>
+                        <li><a href="<?php echo ROOT . 'courses/all/' . $department['id'] ?>" class="<?php echo ($data['department_name'] == $department['id']) ? 'selected' : false; ?>"><?php echo $department['name']; ?></a></li>
                     <?php } ?>
               </ul>
           </section>

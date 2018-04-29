@@ -21,13 +21,7 @@
   <!-- Main Content: Centered Menu & Title -->
   <section id="main_content" class="no_opacity left_content">
       <h1><span>02</span>About</h1>
-      <ul>
-        <li><a href="<?php echo ROOT; ?>pages/admissions/" class="content_page">Admissions</a></li>
-        <li><a href="<?php echo ROOT; ?>pages/about/" class="content_page">About</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Campus Life</a></li>
-        <li><a href="#">Store</a></li>
-      </ul>
+      <?php require APP . 'views/layouts/pages/nav.php'; ?>
       <p>Hello, World! We are XY Community College. A space for learning design, technology and entrepreneurship at the highest level, situated in globally admired creative hub and harbour city.</p>
   </section><!-- #main_content -->
   <section class="gallery_circles full_gallery">

@@ -24,9 +24,9 @@
 </section>
 <main id="main">
 
-     <div class="red_bg"></div>
+<div class="red_bg" id="particles"></div>
 
-<section id="website" class="">
+<section id="website" class="btn_grey">
   <!-- Logo -->
   <div class="logo_full_wrap">
     <a href="<?php echo ROOT; ?>" class="logo_wrap home_page">
@@ -35,13 +35,13 @@
   </div>
 
   <!-- Login Button -->
-  <div class="login_wrap">
+  <div class="login_wrap color_grey">
     <a href="<?php echo ROOT; ?>">Back</a>
     <div class="login_line"></div>
   </div>
 
   <section class="form_login_container">
-    <form action="<?php echo ROOT;?>users/auth/" method="post">
+    <form action="<?php echo ROOT;?>users/auth/" method="post" autocomplete="off">
       <?php
 
       //Display Errors
@@ -50,8 +50,8 @@
       echo $data['errors']['match'] ? '<div class="login-error">'. $data['errors']['match'] .'</div>' : false;
 
       ?>
-      <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
+      <input type="email" name="email" placeholder="Email" autocomplete="false">
+      <input type="password" name="password" placeholder="Password" autocomplete="new-password">
       <input type="submit" name="submit" value="Log In">
       <a href="<?php echo ROOT; ?>portal/password">Forgot Username or Password?</a>
     </form>
@@ -65,9 +65,7 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://use.fontawesome.com/e6e86262b4.js"></script> <!-- Icons -->
-<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
-<script src="<?php echo ROOT; ?>public/js/progressbar.js"></script>
+<script src="<?php echo ROOT; ?>public/js/particles.js"></script>
 <script src="<?php echo ROOT; ?>public/js/portal.js"></script>
 </body>
 

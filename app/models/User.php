@@ -24,7 +24,7 @@ class User
   public function findAllUsersPag(){
 
     //Set Parameters
-    $query = 'SELECT * FROM users ORDER BY role, first_name';
+    $query = "SELECT * FROM users ORDER BY CASE WHEN role = 'admin' THEN '1' WHEN role = 'teacher' THEN '2' ELSE role END, first_name ASC";
     $total = $this->db->rowCountExecute($query);
     $page  = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
     $limit = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 25;

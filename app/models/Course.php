@@ -66,6 +66,14 @@ class Course
         return $this->db->resultset();
     }
 
+    public function findByDepartment($department_id){
+         $query = 'SELECT * FROM courses WHERE department_id = :department_id';
+         $this->db->query($query);
+         $this->db->bind(':department_id', $department_id);
+         return $this->db->resultset();
+    }
+
+
     public function findBySemester($semester)
     {
         $query = "SELECT * FROM courses WHERE semester = :semester ORDER BY course_id ASC, section ASC";
