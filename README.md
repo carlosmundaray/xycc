@@ -11,21 +11,22 @@ XYCC is a free open-source online Learning Management System (LMS) or a Course M
 - More features to come.
 
 ## Demo
-Please visit the portal at the following site: http://www.jordandavila.com/xycc/users/login
+Homepage: http://www.jordandavila.com/xycc/
+Portal Login: http://www.jordandavila.com/xycc/users/login/
 
 There are 3 user roles. The admin, teacher and the student.
 
-Admin Credentials:
-Email: admin@example.com
-Password: password
+Admin Credentials:  
+Email: admin@example.com  
+Password: password  
 
-Teacher Credentials:
-Email: teacher@example.com
-Password: password
+Teacher Credentials:  
+Email: teacher@example.com  
+Password: password  
 
-Student Credentials:
-Email: student@example.com
-Password: password
+Student Credentials:  
+Email: student@example.com  
+Password: password  
 
 ## Documentation
 For more information on XYCC, visit http://www.jordandavila.com/xycc/docs
