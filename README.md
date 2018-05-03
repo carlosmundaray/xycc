@@ -1,4 +1,4 @@
-# XYCC vBeta
+# XYCC Beta v0.1
 XYCC is a free open-source online Learning Management System (LMS) or a Course Management System (CMS). It was designed to help educators manage effective online courses. 
 
 ## Features
